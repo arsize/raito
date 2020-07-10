@@ -1,0 +1,19 @@
+{
+  "name": "jsprojs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "moon": "bin/moon"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "inquirer": "^7.3.0"
+  },
+  "dependencies": {}
+}

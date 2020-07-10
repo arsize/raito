@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+const path = require("path")
+const program = require("commander")
+const req = command => path.resolve(__dirname, '../commands/', command)
+program
+    .version(require('../package.json').version, '-v,--version')
+program
+    .command('list')
+    .description("show all templates")
+    .action((cmd) => {
+        require(req('list'))
+    })
+program
+    .command('pwd')
+    .description("show the local path")
+    .action(cmd => {
+        require(req('pwd'))
+    })
+program.parse(process.argv)
+if (!program.args.length) {
+    program.help()
+}
