@@ -1,6 +1,6 @@
 {
   "name": "raito",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -18,7 +18,9 @@
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
+    "cli-table": "^0.3.1",
     "commander": "^5.1.0",
+    "format-json": "^1.0.3",
     "inquirer": "^7.3.0"
   }
 }

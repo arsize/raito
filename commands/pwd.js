@@ -1,6 +1,5 @@
-const path = require('path')
 function pwd() {
-    console.log(`${path.resolve(__dirname)}`)
+    console.log(`${process.cwd()}`)
 }
 
 module.exports = pwd()
