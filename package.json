@@ -16,9 +16,9 @@
   ],
   "author": "arsize",
   "license": "ISC",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "commander": "^5.1.0",
     "inquirer": "^7.3.0"
-  },
-  "dependencies": {}
+  }
 }
