@@ -1,23 +1,81 @@
 #!/usr/bin/env node
 
-const path = require("path")
-const program = require("commander")
-const req = command => path.resolve(__dirname, '../commands/', command)
+const path = require("path");
+const chalk = require("chalk");
+const program = require("commander");
+const { args } = require("commander");
+const req = (command) => path.resolve(__dirname, "../commands/", command);
+program.version(require("../package.json").version, "-v,--version");
 program
-    .version(require('../package.json').version, '-v,--version')
+  .command("list")
+  .alias("l")
+  .description("show cache file list")
+  .action((cmd) => {
+    require(req("list"));
+  });
 program
-    .command('list')
-    .description("show all templates")
-    .action((cmd) => {
-        require(req('list'))
-    })
+  .command("pwd")
+  .description("show local path")
+  .action((cmd) => {
+    require(req("pwd"));
+  });
 program
-    .command('pwd')
-    .description("show the local path")
-    .action(cmd => {
-        require(req('pwd'))
-    })
-program.parse(process.argv)
+  .command("open")
+  .description("open current folder")
+  .action((cmd) => {
+    require(req("open"))()
+  });
+program
+  .command("add")
+  .alias("a")
+  .description("add file path to cache")
+  .action((cmd) => {
+    if (isChinese(cmd.args[0])) {
+      console.log(chalk.red("des描述信息不能填中文"));
+    } else {
+      require(req("add"))(cmd.args[0]);
+    }
+  });
+program
+  .command("del")
+  .alias("d")
+  .description("delete file by idcode")
+  .action((cmd) => {
+    if (cmd.args.length == 0) {
+      console.log("请选择要删除的文件link");
+    } else {
+      require(req("del"))(cmd.args);
+    }
+  });
+program
+  .command("clear")
+  .description("clean all cache")
+  .action((cmd) => {
+    require(req("clear"));
+  });
+program
+  .command("go")
+  .alias("g")
+  .description("go to the floder")
+  .action((cmd) => {
+    if (cmd.args.length == 0) {
+      console.log("请指定要打开的项目ID");
+    } else if (cmd.args.length > 1) {
+      console.log("请指定要打开的项目ID");
+    } else {
+      require(req("go"))(cmd.args[0]);
+    }
+  });
+
+program.parse(process.argv);
 if (!program.args.length) {
-    program.help()
+  program.help();
+}
+function isChinese(s) {
+  var patrn = /[\u4E00-\u9FA5]|[\uFE30-\uFFA0]/gi;
+  if (!patrn.exec(s)) {
+    return false;
+  } else {
+    return true;
+  }
 }
