@@ -9,26 +9,26 @@ program.version(require("../package.json").version, "-v,--version");
 program
   .command("list")
   .alias("l")
-  .description("show cache file list")
+  .description("Show Cache File List.")
   .action((cmd) => {
     require(req("list"));
   });
 program
   .command("pwd")
-  .description("show local path")
+  .description("Show Local Path.")
   .action((cmd) => {
     require(req("pwd"));
   });
 program
   .command("open")
-  .description("open current folder")
+  .description("Open Current Folder.")
   .action((cmd) => {
     require(req("open"))()
   });
 program
   .command("add")
   .alias("a")
-  .description("add file path to cache")
+  .description("Add File Path To Cache.")
   .action((cmd) => {
     if (isChinese(cmd.args[0])) {
       console.log(chalk.red("des描述信息不能填中文"));
@@ -39,7 +39,7 @@ program
 program
   .command("del")
   .alias("d")
-  .description("delete file by idcode")
+  .description("Delete File By Idcode.")
   .action((cmd) => {
     if (cmd.args.length == 0) {
       console.log("请选择要删除的文件link");
@@ -49,14 +49,14 @@ program
   });
 program
   .command("clear")
-  .description("clean all cache")
+  .description("Clean All Cache.")
   .action((cmd) => {
     require(req("clear"));
   });
 program
   .command("go")
   .alias("g")
-  .description("go to the folder")
+  .description("Go To The Folder.")
   .action((cmd) => {
     if (cmd.args.length == 0) {
       console.log("请指定要打开的项目ID");
@@ -68,7 +68,7 @@ program
   });
 program
   .command("dev")
-  .description("a little development server with live reload capability")
+  .description("A Little Development Server With Live Reload Capability.")
   .action(cmd => {
     if (cmd.args.length == 0) {
       require(req("dev"))();
@@ -78,11 +78,30 @@ program
   })
 program
   .command("post")
-  .description("a post request")
+  .description("A Post Request.")
   .action(cmd => {
     require(req("post"))
   })
-
+program
+  .command("text")
+  .description("A String Of Text To Turn Into ASCII Art.")
+  .action(cmd => {
+    if (cmd.args.length == 0) {
+      require(req("text"))('text');
+    } else {
+      require(req("text"))(cmd.args[0])
+    }
+  })
+program
+  .command("sock5")
+  .description("Wait.")
+  .action(cmd => {
+    if (cmd.args.length == 0) {
+      require(req("sock5"))(1080);
+    } else {
+      require(req("sock5"))(cmd.args[0])
+    }
+  })
 
 program.parse(process.argv);
 if (!program.args.length) {

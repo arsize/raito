@@ -3,7 +3,6 @@ const exec = require("child_process").exec;
 function open(param) {
   if (os.type() == "Windows_NT") {
     //windows
-
     if (param) {
       exec(`cd ${param} && start .`, function (err) {
         if (err) {
