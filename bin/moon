@@ -69,14 +69,20 @@ program
 program
   .command("dev")
   .description("a little development server with live reload capability")
-  .action(cmd=>{
-    if(cmd.args.length == 0){
+  .action(cmd => {
+    if (cmd.args.length == 0) {
       require(req("dev"))();
-    }else{
+    } else {
       require(req("dev"))(cmd.args[0]);
     }
   })
-  
+program
+  .command("post")
+  .description("a post request")
+  .action(cmd => {
+    require(req("post"))
+  })
+
 
 program.parse(process.argv);
 if (!program.args.length) {
