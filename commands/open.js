@@ -4,10 +4,11 @@ function open(param) {
   if (os.type() == "Windows_NT") {
     //windows
     if (param) {
-      exec(`cd ${param} && start .`, function (err) {
+      exec(`start ${param}`, function (err) {
         if (err) {
           console.log("sorry,open folder error");
         } else {
+          console.log()
           console.log("success!");
         }
       })
