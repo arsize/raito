@@ -5,7 +5,7 @@ const chalk = require('chalk')
 function createTable(){
     const Table = require('cli-table')
     const table = new Table({
-        head:['Floder Name','Path','Go','Des'],
+        head: ['Folder Name','Path','Go','Des'],
         chars:{ 'top': '═' , 'top-mid': '╤' , 'top-left': '╔' , 'top-right': '╗'
         , 'bottom': '═' , 'bottom-mid': '╧' , 'bottom-left': '╚' , 'bottom-right': '╝'
         , 'left': '║' , 'left-mid': '╟' , 'mid': '─' , 'mid-mid': '┼'

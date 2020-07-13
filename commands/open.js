@@ -5,7 +5,7 @@ function open(param) {
     //windows
     exec(`start ${param ? param : "."}`, function (err, stdout, stderr) {
       if (err) {
-        console.log("sorry,open floder error");
+        console.log("sorry,open folder error");
       } else {
         console.log("success!");
       }
@@ -14,7 +14,7 @@ function open(param) {
     //mac
     exec(`open ${param ? param : "."}`, function (err, stdout, stderr) {
       if (err) {
-        console.log("sorry,open floder error");
+        console.log("sorry,open folder error");
       } else {
         console.log("success!");
       }

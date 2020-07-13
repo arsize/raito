@@ -56,7 +56,7 @@ program
 program
   .command("go")
   .alias("g")
-  .description("go to the floder")
+  .description("go to the folder")
   .action((cmd) => {
     if (cmd.args.length == 0) {
       console.log("请指定要打开的项目ID");
